@@ -6,8 +6,6 @@ function Navbar() {
     const navigate = useNavigate();
     const {isAuthenticated, user} = useAuth();
 
-    console.log(isAuthenticated + user);
-
     return (
         <nav className="navbar">
             <button className="navbarButton" onClick={() => navigate("/")} type="button" id="navbarToggler"> Home </button>

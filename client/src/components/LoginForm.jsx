@@ -48,16 +48,18 @@ function LoginForm() {
             <form className="loginForm" action={handleSubmit}>
                 <input className={`formInput ${activeInput === 'username' ? 'active' : ''}`}
                        onChange={handleChange}
-                       onMouseEnter={() => setActiveInput('username')}
-                       onMouseLeave={() => setActiveInput(null)}
+                       onMouseOver={() => setActiveInput('username')}
+                       onFocus={() => setActiveInput('username')}
+                       onBlur={() => setActiveInput(null)}
                        name='username'
                        type='text'
                        placeholder='Username' />
 
                 <input className={`formInput ${activeInput === 'password' ? 'active' : ''}`}
                        onChange={handleChange}
-                       onMouseEnter={() => setActiveInput('password')}
-                       onMouseLeave={() => setActiveInput(null)}
+                       onMouseOver={() => setActiveInput('password')}
+                       onFocus={() => setActiveInput('password')}
+                       onBlur={() => setActiveInput(null)}
                        name='password'
                        type='password'
                        placeholder='Password'/>
