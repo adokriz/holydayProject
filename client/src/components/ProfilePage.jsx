@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import {useAuth} from "./AuthProvider.jsx";
 import {existUser, loadUserData} from "../utils.js";
 import {useEffect, useState} from "react";
+import {getUserSkillsData} from "../profilePageFunc.js";
 
 function ProfilePage() {
     const {username} = useParams();
@@ -12,6 +13,7 @@ function ProfilePage() {
     const [loading, setLoading] = useState(true);
     const [userObject, setUserObject] = useState(null);
     const [isImageHovered, setImageHovered] = useState(false);
+    const [skillsData, setSkillsData] = useState([]);
 
     useEffect(() => {
         const testExistenceOfUser = async () => {
@@ -25,6 +27,9 @@ function ProfilePage() {
 
                     const userData = await loadUserData(username);
                     setUserObject(userData);
+
+                    const userSkillData = await getUserSkillsData(username);
+                    setSkillsData(userSkillData);
                 } else {
                     setProfileExist(false);
                 }
@@ -71,30 +76,14 @@ function ProfilePage() {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>C language</td>
-                        <td> 800+</td>
-                        <td> intermediate</td>
-                        <td> yes</td>
-                    </tr>
-                    <tr>
-                        <td>C language</td>
-                        <td> 800+</td>
-                        <td> intermediate</td>
-                        <td> yes</td>
-                    </tr>
-                    <tr>
-                        <td>C language</td>
-                        <td> 800+</td>
-                        <td> intermediate</td>
-                        <td> yes</td>
-                    </tr>
-                    <tr>
-                        <td>C language</td>
-                        <td> 800+</td>
-                        <td> intermediate</td>
-                        <td> yes</td>
-                    </tr>
+                    {skillsData.map((skillItem, index) => (
+                        <tr key={index}>
+                            <td>{skillItem.skill}</td>
+                            <td>{skillItem.hours}</td>
+                            <td>{skillItem.rank}</td>
+                            <td>{skillItem.certification === 1 ? 'Yes' : (skillItem.certification === 0 ? 'No' : String(skillItem.certification))}</td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
             </div>
