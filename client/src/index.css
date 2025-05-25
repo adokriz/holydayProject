@@ -40,3 +40,18 @@ nav button {
   width: 30%;
   margin-left: 10%;
 }
+
+nav img {
+  width: 100px;
+  height: 70px;
+  margin: 6px;
+}
+
+.homePageContainer {
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/Gemini_Generated_Image_gaovslgaovslgaov.jpeg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 4%;
+}

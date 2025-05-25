@@ -1,0 +1,79 @@
+.profilPhoto {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    box-shadow: rgba(243, 239, 239, 0.36) 15px 25px 30px;
+    transition: all 0.8s ease-in-out;
+}
+
+.profilPhoto:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    box-shadow: rgba(243, 239, 239, 0.36) 5px 1px 30px;
+}
+
+.profilContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilContainer button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    right: 1.8rem;
+    top: 3rem;
+    border-color: aquamarine;
+    transition: opacity 0.9s ease-out;
+}
+
+.hovered {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.skillTableContainer {
+    width: 70%;
+    margin: auto;
+}
+
+.profileMainContainer h2{
+    padding-top: 5%;
+    text-align: left;
+}
+
+.profileSkillTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profileSkillTable th,
+.profileSkillTable td {
+    padding: 12px 15px;
+    text-align: left;
+    border-top: 1px solid #ddd;
+}
+
+.profileSkillTable thead th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+}
+
+.profileSkillTable tbody tr:hover {
+    border: 1px solid aquamarine;
+    background-color: rgba(102, 205, 170, 0.1);
+}
+
+.profileSkillTable tbody tr:hover td {
+    border-color: aquamarine;
+}
+
+.profileSkillTable tbody tr:hover + tr th,
+.profileSkillTable tbody tr:hover + tr td {
+    border-top-color: aquamarine;
+}

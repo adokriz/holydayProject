@@ -26,6 +26,7 @@ if (json_last_error() !== JSON_ERROR_NONE || !is_array($data)) {
 }
 
 $username = $data['username'] ?? '';
+$allDataFlag = $data['allData'] ?? '';
 
 if (empty($username)) {
     http_response_code(400);
@@ -34,7 +35,6 @@ if (empty($username)) {
 }
 
 try {
-    echo $username;
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
@@ -42,6 +42,12 @@ try {
 
     if ($user > 0) {
         http_response_code(200);
+        if ($allDataFlag){
+            echo json_encode([
+            'username' => $user['username'],
+            'img' => $user['img']
+            ]);
+        }
     } else {
         http_response_code(404);
         echo json_encode(['message' => 'User not found.']);
