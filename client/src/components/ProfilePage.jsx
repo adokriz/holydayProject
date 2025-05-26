@@ -1,9 +1,9 @@
 import './ProfilePage.css'
 import {useParams} from 'react-router-dom';
 import {useAuth} from "./AuthProvider.jsx";
-import {existUser, loadUserData} from "../utils.js";
 import {useEffect, useState} from "react";
-import {getUserSkillsData} from "../profilePageFunc.js";
+import {generalUserQuery} from "../profilePageFunc.js";
+import NotFound from "./error/NotFound.jsx";
 
 function ProfilePage() {
     const {username} = useParams();
@@ -20,16 +20,19 @@ function ProfilePage() {
             setLoading(true);
 
             try {
-                const response = await existUser(username);
+                const response = await generalUserQuery(user, `http://localhost/holyday/sqlQuerier.php`, false);
 
-                if (response) {
+                if (response.status === 200) {
                     setProfileExist(true);
 
-                    const userData = await loadUserData(username);
-                    setUserObject(userData);
+                    const userData = await generalUserQuery(user, `http://localhost/holyday/sqlQuerier.php`, true);
+                    setUserObject(userData.data);
 
-                    const userSkillData = await getUserSkillsData(username);
-                    setSkillsData(userSkillData);
+                    const userSkillData = await generalUserQuery(user, `http://localhost/holyday/getSkills.php`, false);
+                    if (userSkillData) {
+                        setSkillsData(userSkillData.data);
+                    }
+
                 } else {
                     setProfileExist(false);
                 }
@@ -39,8 +42,11 @@ function ProfilePage() {
                 setLoading(false);
             }
         }
-
-        testExistenceOfUser();
+        if (user === username && isAuthenticated) {
+            testExistenceOfUser();
+        } else {
+            setLoading(false);
+        }
     }, [username]);
 
     if (!isAuthenticated) {
@@ -52,7 +58,7 @@ function ProfilePage() {
     }
 
     if (!profileExist) {
-        return <div>404 Not found</div>;
+        return <NotFound/>
     }
 
     return (
@@ -76,14 +82,14 @@ function ProfilePage() {
                     </tr>
                     </thead>
                     <tbody>
-                    {skillsData.map((skillItem, index) => (
+                    {skillsData.length > 0 ? skillsData.map((skillItem, index) => (
                         <tr key={index}>
                             <td>{skillItem.skill}</td>
                             <td>{skillItem.hours}</td>
                             <td>{skillItem.rank}</td>
                             <td>{skillItem.certification === 1 ? 'Yes' : (skillItem.certification === 0 ? 'No' : String(skillItem.certification))}</td>
                         </tr>
-                    ))}
+                    )) :  <tr><td id="noSkills" colSpan="4">No skills added yet</td></tr>}
                     </tbody>
                 </table>
             </div>

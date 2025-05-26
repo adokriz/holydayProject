@@ -1,19 +1,18 @@
 import axios from "axios";
 
-// TODO troska refactor
-export const getUserSkillsData = async (username) => {
+export const generalUserQuery = async (user, endpoint, allData) => {
     const queryData = {
-        username: username,
+        username: user,
+        allData: allData,
     }
+
     try {
-        const response = await axios.post('http://localhost/holyday/getSkills.php',queryData,{
+        return await axios.post(endpoint, queryData, {
             headers: {
                 'Content-Type': 'application/json',
             },
             withCredentials: true
         });
-
-        return response.data;
     }
     catch (error) {
         console.log(error);

@@ -1,16 +1,15 @@
-import { useState } from 'react'
 import './App.css'
 import LoginForm from './components/LoginForm.jsx'
-import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from "./components/Home.jsx";
 import Navbar from "./components/Navbar.jsx";
 import ProfilePage from "./components/ProfilePage.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Logout from "./components/Logout.jsx";
+import NotFound from "./components/error/NotFound.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <Router>
@@ -23,7 +22,7 @@ function App() {
                 <Route path="/profile/:username" element={<ProfilePage />} />
                 <Route path="/logout" element={<Logout />}> </Route>
             </Route>
-            <Route path="*" element={<h1>404: Page not found </h1>}></Route>
+            <Route path="*" element={<NotFound/>}></Route>
         </Routes>
         </AuthProvider>
     </Router>

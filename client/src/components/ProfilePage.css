@@ -77,3 +77,8 @@
 .profileSkillTable tbody tr:hover + tr td {
     border-top-color: aquamarine;
 }
+
+#noSkills {
+    text-align: center;
+    font-size: 3rem;
+}
