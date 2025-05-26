@@ -4,6 +4,7 @@ import {useAuth} from "./AuthProvider.jsx";
 import {useEffect, useState} from "react";
 import {generalUserQuery} from "../profilePageFunc.js";
 import NotFound from "./error/NotFound.jsx";
+import DefaultLogo from "./DefaultLogo.jsx";
 
 function ProfilePage() {
     const {username} = useParams();
@@ -61,14 +62,19 @@ function ProfilePage() {
         return <NotFound/>
     }
 
+    const onMouseOver = () => setImageHovered(true);
+    const onMouseOut = () => setImageHovered(false);
+
     return (
         <div className="profileMainContainer">
             <h1 className="profile-page">This is {username} profile</h1>
             <div className="profilContainer">
-                <img className='profilPhoto' src={userObject.img} alt="profile-photo"
-                     onMouseOver={() => setImageHovered(true)}
-                     onMouseOut={() => setImageHovered(false)}/>
-                <button className={isImageHovered === true ? 'hovered' : ''}> +</button>
+                {userObject.img ? <img className='profilPhoto' src={userObject.img} alt="profile-photo"
+                     onMouseOver={onMouseOver}
+                     onMouseOut={onMouseOut}/> :
+                <DefaultLogo username={user} onMouseOver={onMouseOver}
+                             onMouseOut={onMouseOut}/>}
+                <button id="profilePlusButton" className={isImageHovered === true ? 'hovered' : ''}> +</button>
             </div>
             <div className="skillTableContainer">
                 <h2>My Skills</h2>

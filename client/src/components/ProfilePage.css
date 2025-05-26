@@ -4,6 +4,7 @@
     border-radius: 50%;
     box-shadow: rgba(243, 239, 239, 0.36) 15px 25px 30px;
     transition: all 0.8s ease-in-out;
+    font-size: 4rem;
 }
 
 .profilPhoto:hover {
@@ -20,7 +21,7 @@
     justify-content: center;
 }
 
-.profilContainer button {
+#profilePlusButton {
     width: 30px;
     height: 30px;
     border-radius: 50%;
