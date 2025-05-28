@@ -1,0 +1,58 @@
+.authForm {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 40%;
+}
+
+.authForm button {
+    border-radius: 10px;
+    border-color: aquamarine;
+    border-width: 1px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    width: 30%;
+    margin: 10px auto auto;
+}
+
+.usernameInput{
+    /*width: 100%;*/
+}
+.authMessage{
+    color: red;
+}
+
+.available{
+    color: green;
+}
+
+.usernameRegisterContainer{
+    display: flex;
+}
+
+.statusIconContainer{
+    position: relative;
+    right: -7%;
+}
+
+.statusIconContainer svg{
+    margin-top: 50%;
+}
+
+.usernameCheckerIconAvailable {
+    color: #10b981;
+}
+
+.usernameCheckerIconTaken {
+    color: #ef4444;
+}
+
+.usernameCheckerIconChecking {
+    color: #f59e0b;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+}

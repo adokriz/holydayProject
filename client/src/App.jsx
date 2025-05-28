@@ -8,6 +8,7 @@ import { AuthProvider } from "./components/AuthProvider.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Logout from "./components/Logout.jsx";
 import NotFound from "./components/error/NotFound.jsx";
+import RegisterForm from "./components/auth/RegisterForm.jsx";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <AuthProvider>
         <Navbar/>
         <Routes>
+            <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/" element={<Home />} />
             <Route element={<PrivateRoute />}>

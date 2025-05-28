@@ -10,7 +10,9 @@ function Navbar() {
         <nav className="navbar">
             <img src={logo} alt="SkillCanvasLogo"></img>
             <button className="navbarButton" onClick={() => navigate("/")} type="button" id="navbarToggler"> Home </button>
-            {!isAuthenticated ? (<button className="navbarButton" onClick={() => navigate("/login")}>Login</button>) :
+            {!isAuthenticated ? (<><button className="navbarButton" onClick={() => navigate("/login")}>Login</button>
+                    <button className="navbarButton" onClick={() => navigate("/register")}>Register</button>
+                </>) :
                 (<><button className="navbarButton" onClick={() => navigate("/logout")}>Logout</button>
                     <button className="navbarButton" onClick={() => navigate("/profile/" + user)}>{user}</button>
                 </>)}

@@ -1,0 +1,14 @@
+.formInput {
+    height: 25px;
+    margin: 10px;
+    border-color: aquamarine;
+    border-width: 1px;
+    transition: all 0.7s ease;
+    width: 80%;
+}
+
+.formInput.active {
+    transform: scale(1.20);
+    background-color: rgba(255,255,255,0.05);
+    box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.3);
+}

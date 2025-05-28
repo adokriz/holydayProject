@@ -11,7 +11,10 @@ export const generalUserQuery = async (user, endpoint, allData) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            withCredentials: true
+            withCredentials: true,
+            validateStatus: function (status) {
+                return status === 200 || status === 404;
+            }
         });
     }
     catch (error) {
