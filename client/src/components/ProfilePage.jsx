@@ -7,6 +7,7 @@ import NotFound from "./error/NotFound.jsx";
 import DefaultLogo from "./DefaultLogo.jsx";
 import ToggleStrokeWidth from "./elementaryComponents/Toggler.jsx";
 import TableView from "./profile/TableView.jsx";
+import GridViewDnD from "./profile/GridViewDnD.jsx";
 
 function ProfilePage() {
     const {username} = useParams();
@@ -88,7 +89,8 @@ function ProfilePage() {
                 <h2>My Skills</h2>
                     <ToggleStrokeWidth onToggleChange={handleToggleChange} offToggleTittle="Table" onToggleTittle="Canvas"/>
                 </div>
-                {!isToggledOutside ? <TableView skillsData={skillsData}/> : <p>Vyser si oko</p>}
+                {!isToggledOutside ? <TableView skillsData={skillsData}/> :
+                    <GridViewDnD/>}
             </div>
         </div>
     )

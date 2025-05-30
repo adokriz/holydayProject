@@ -1,0 +1,21 @@
+.dashed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    position: relative;
+    width: 800px;
+    height: 600px;
+    border: 2px dashed #888;
+}
+
+.gridViewItem{
+    border: 2px dashed #888;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: grab;
+    user-select: none;
+
+    width: 120px;
+    height: 80px;
+}
