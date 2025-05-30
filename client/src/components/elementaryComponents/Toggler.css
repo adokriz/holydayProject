@@ -1,0 +1,43 @@
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: white;
+    font-family: sans-serif;
+
+}
+
+.toggle-label {
+    text-align: right;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.toggle-switch {
+    width: 40px;
+    height: 20px;
+    border-radius: 999px;
+    background-color: #555;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-switch.toggled {
+    background-color: aquamarine;
+}
+
+.toggle-thumb {
+    width: 16px;
+    height: 16px;
+    background-color: grey;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-switch.toggled .toggle-thumb {
+    transform: translateX(20px);
+}

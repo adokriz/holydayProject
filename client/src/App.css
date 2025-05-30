@@ -15,4 +15,9 @@
   font-size: 1.5em;
 }
 
-
+.headerWithToggleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 7%;
+}

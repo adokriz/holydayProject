@@ -5,6 +5,8 @@ import {useEffect, useState} from "react";
 import {generalUserQuery} from "../profilePageFunc.js";
 import NotFound from "./error/NotFound.jsx";
 import DefaultLogo from "./DefaultLogo.jsx";
+import ToggleStrokeWidth from "./elementaryComponents/Toggler.jsx";
+import TableView from "./profile/TableView.jsx";
 
 function ProfilePage() {
     const {username} = useParams();
@@ -15,6 +17,11 @@ function ProfilePage() {
     const [userObject, setUserObject] = useState(null);
     const [isImageHovered, setImageHovered] = useState(false);
     const [skillsData, setSkillsData] = useState([]);
+    const [isToggledOutside, setToggledOutside] = useState(false);
+
+    const handleToggleChange = (newState) => {
+        setToggledOutside(newState);
+    };
 
     useEffect(() => {
         const testExistenceOfUser = async () => {
@@ -77,27 +84,11 @@ function ProfilePage() {
                 <button id="profilePlusButton" className={isImageHovered === true ? 'hovered' : ''}> +</button>
             </div>
             <div className="skillTableContainer">
+                <div className="headerWithToggleContainer">
                 <h2>My Skills</h2>
-                <table className="profileSkillTable">
-                    <thead>
-                    <tr>
-                        <th>Name of the skill</th>
-                        <th>Approx. spent hour</th>
-                        <th>Overall rank</th>
-                        <th>Certification</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {skillsData.length > 0 ? skillsData.map((skillItem, index) => (
-                        <tr key={index}>
-                            <td>{skillItem.skill}</td>
-                            <td>{skillItem.hours}</td>
-                            <td>{skillItem.rank}</td>
-                            <td>{skillItem.certification === 1 ? 'Yes' : (skillItem.certification === 0 ? 'No' : String(skillItem.certification))}</td>
-                        </tr>
-                    )) :  <tr><td id="noSkills" colSpan="4">No skills added yet</td></tr>}
-                    </tbody>
-                </table>
+                    <ToggleStrokeWidth onToggleChange={handleToggleChange} offToggleTittle="Table" onToggleTittle="Canvas"/>
+                </div>
+                {!isToggledOutside ? <TableView skillsData={skillsData}/> : <p>Vyser si oko</p>}
             </div>
         </div>
     )
