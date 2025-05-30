@@ -1,7 +1,7 @@
-import { useDraggable } from "@dnd-kit/core";
+import { useDraggable } from "@dnd-kit/core"
 
 const GridViewItem = ({ id, x, y, isDragging}) => {
-    const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
+    const { attributes, listeners, setNodeRef, transform } = useDraggable({ id })
 
     const style = {
         position: "absolute",
@@ -17,14 +17,14 @@ const GridViewItem = ({ id, x, y, isDragging}) => {
             : "0 4px 12px rgba(0,0,0,0.15)",
         transition: isDragging ? "none" : "all 0.1s ease",
         zIndex: isDragging ? 1000 : 1
-    };
+    }
 
     return (
         <div ref={setNodeRef} className="gridViewItem" style={style} {...attributes} {...listeners}>
             <h3>{id}</h3>
             <p>Some content...</p>
         </div>
-    );
-};
+    )
+}
 
-export default GridViewItem;
+export default GridViewItem

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 export const generalUserQuery = async (user, endpoint, allData) => {
     const queryData = {
@@ -13,11 +13,11 @@ export const generalUserQuery = async (user, endpoint, allData) => {
             },
             withCredentials: true,
             validateStatus: function (status) {
-                return status === 200 || status === 404;
+                return status === 200 || status === 404
             }
-        });
+        })
     }
     catch (error) {
-        console.log(error);
+        console.log(error)
     }
 }

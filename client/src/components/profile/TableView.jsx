@@ -22,4 +22,4 @@ function TableView({skillsData}) {
         </table>)
 }
 
-export default TableView;
+export default TableView

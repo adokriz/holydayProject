@@ -1,10 +1,10 @@
 import {useNavigate} from 'react-router-dom'
-import {useAuth} from "./AuthProvider.jsx";
+import {useAuth} from "./AuthProvider.jsx"
 import logo from "../../img/Gemini_Generated_Image_gaovslgaovslgaov.jpeg"
 
 function Navbar() {
-    const navigate = useNavigate();
-    const {isAuthenticated, user} = useAuth();
+    const navigate = useNavigate()
+    const {isAuthenticated, user} = useAuth()
 
     return (
         <nav className="navbar">
@@ -20,4 +20,4 @@ function Navbar() {
     )
 }
 
-export default Navbar;
+export default Navbar

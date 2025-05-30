@@ -1,8 +1,8 @@
-import {useState} from "react";
-import "./InputForForms.css";
+import {useState} from "react"
+import "./InputForForms.css"
 
 function InputForForms({nameOfInput, onChange, typeOfInput, placeholder, classname}) {
-    const [activeInput, setActiveInput] = useState(null);
+    const [activeInput, setActiveInput] = useState(null)
 
     return (
         <input className={`${classname} formInput ${activeInput === nameOfInput ? 'active' : ''}`}
@@ -16,4 +16,4 @@ function InputForForms({nameOfInput, onChange, typeOfInput, placeholder, classna
             )
 }
 
-export default InputForForms;
+export default InputForForms

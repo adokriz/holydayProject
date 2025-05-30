@@ -1,27 +1,27 @@
 import './LoginForm.css'
-import {useState} from "react";
-import axios from 'axios';
-import {useNavigate} from "react-router-dom";
-import { useAuth }  from "./AuthProvider.jsx";
-import InputForForms from "./elementaryComponents/InputForForms.jsx";
+import {useState} from "react"
+import axios from 'axios'
+import {useNavigate} from "react-router-dom"
+import { useAuth }  from "./AuthProvider.jsx"
+import InputForForms from "./elementaryComponents/InputForForms.jsx"
 
 
 function LoginForm() {
     const [formData, setFormData] = useState({
         username: '',
         password: ''
-    });
-    const navigate = useNavigate();
-    const { login } = useAuth();
+    })
+    const navigate = useNavigate()
+    const { login } = useAuth()
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
-        });
-    };
+        })
+    }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async () => {
         try {
             await axios.post('http://localhost/holyday/login.php', formData, {
                 headers: {
@@ -30,15 +30,15 @@ function LoginForm() {
                 withCredentials: true
             }).then(response => {
                 if (response.status === 200) {
-                    login(formData.username);
-                    navigate('/profile/' + formData.username);
+                    login(formData.username)
+                    navigate('/profile/' + formData.username)
                 }
             })
         }
         catch (error) {
-            console.log(error);
+            console.log(error)
         }
-    };
+    }
 
     return (
         <>
@@ -52,4 +52,4 @@ function LoginForm() {
     )
 }
 
-export default LoginForm;
+export default LoginForm

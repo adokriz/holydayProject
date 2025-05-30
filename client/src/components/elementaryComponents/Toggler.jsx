@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import './Toggler.css';
+import React, { useState } from 'react'
+import './Toggler.css'
 
 const ToggleStrokeWidth = ({offToggleTittle, onToggleTittle, onToggleChange}) => {
-    const [isToggled, setIsToggled] = useState(false);
+    const [isToggled, setIsToggled] = useState(false)
 
     const handleToggle = () => {
-        const newState = !isToggled;
-        setIsToggled(newState);
+        const newState = !isToggled
+        setIsToggled(newState)
 
         if (onToggleChange) {
-            onToggleChange(newState);
+            onToggleChange(newState)
         }
-    };
+    }
 
-    const toggleText = isToggled ? onToggleTittle : offToggleTittle;
+    const toggleText = isToggled ? onToggleTittle : offToggleTittle
 
     return (
         <div className="toggle-container">
@@ -24,7 +24,7 @@ const ToggleStrokeWidth = ({offToggleTittle, onToggleTittle, onToggleChange}) =>
                 <div className="toggle-thumb"></div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default ToggleStrokeWidth;
+export default ToggleStrokeWidth

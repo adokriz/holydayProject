@@ -28,6 +28,9 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      semi: ["error", "never"],
+      'no-unexpected-multiline': 'error',
+      'no-extra-semi': 'error'
     },
   },
 ]

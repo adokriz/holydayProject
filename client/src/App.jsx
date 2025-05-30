@@ -1,14 +1,14 @@
 import './App.css'
 import LoginForm from './components/LoginForm.jsx'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from "./components/Home.jsx";
-import Navbar from "./components/Navbar.jsx";
-import ProfilePage from "./components/ProfilePage.jsx";
-import { AuthProvider } from "./components/AuthProvider.jsx";
-import PrivateRoute from "./components/PrivateRoute.jsx";
-import Logout from "./components/Logout.jsx";
-import NotFound from "./components/error/NotFound.jsx";
-import RegisterForm from "./components/auth/RegisterForm.jsx";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Home from "./components/Home.jsx"
+import Navbar from "./components/Navbar.jsx"
+import ProfilePage from "./components/ProfilePage.jsx"
+import { AuthProvider } from "./components/AuthProvider.jsx"
+import PrivateRoute from "./components/PrivateRoute.jsx"
+import Logout from "./components/Logout.jsx"
+import NotFound from "./components/error/NotFound.jsx"
+import RegisterForm from "./components/auth/RegisterForm.jsx"
 
 function App() {
 

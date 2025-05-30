@@ -1,77 +1,77 @@
 import './ProfilePage.css'
-import {useParams} from 'react-router-dom';
-import {useAuth} from "./AuthProvider.jsx";
-import {useEffect, useState} from "react";
-import {generalUserQuery} from "../profilePageFunc.js";
-import NotFound from "./error/NotFound.jsx";
-import DefaultLogo from "./DefaultLogo.jsx";
-import ToggleStrokeWidth from "./elementaryComponents/Toggler.jsx";
-import TableView from "./profile/TableView.jsx";
-import GridViewDnD from "./profile/GridViewDnD.jsx";
+import {useParams} from 'react-router-dom'
+import {useAuth} from "./AuthProvider.jsx"
+import {useEffect, useState} from "react"
+import {generalUserQuery} from "../profilePageFunc.js"
+import NotFound from "./error/NotFound.jsx"
+import DefaultLogo from "./DefaultLogo.jsx"
+import ToggleStrokeWidth from "./elementaryComponents/Toggler.jsx"
+import TableView from "./profile/TableView.jsx"
+import GridViewDnD from "./profile/GridViewDnD.jsx"
 
 function ProfilePage() {
-    const {username} = useParams();
-    const {isAuthenticated, user} = useAuth();
+    const {username} = useParams()
+    const {isAuthenticated, user} = useAuth()
 
-    const [profileExist, setProfileExist] = useState(false);
-    const [loading, setLoading] = useState(true);
-    const [userObject, setUserObject] = useState(null);
-    const [isImageHovered, setImageHovered] = useState(false);
-    const [skillsData, setSkillsData] = useState([]);
-    const [isToggledOutside, setToggledOutside] = useState(false);
+    const [profileExist, setProfileExist] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [userObject, setUserObject] = useState(null)
+    const [isImageHovered, setImageHovered] = useState(false)
+    const [skillsData, setSkillsData] = useState([])
+    const [isToggledOutside, setToggledOutside] = useState(false)
 
     const handleToggleChange = (newState) => {
-        setToggledOutside(newState);
-    };
+        setToggledOutside(newState)
+    }
 
     useEffect(() => {
         const testExistenceOfUser = async () => {
-            setLoading(true);
+            setLoading(true)
 
             try {
-                const response = await generalUserQuery(user, `http://localhost/holyday/sqlQuerier.php`, false);
+                const response = await generalUserQuery(user, `http://localhost/holyday/sqlQuerier.php`, false)
 
                 if (response.status === 200) {
-                    setProfileExist(true);
+                    setProfileExist(true)
 
-                    const userData = await generalUserQuery(user, `http://localhost/holyday/sqlQuerier.php`, true);
-                    setUserObject(userData.data);
+                    const userData = await generalUserQuery(user, `http://localhost/holyday/sqlQuerier.php`, true)
+                    setUserObject(userData.data)
 
-                    const userSkillData = await generalUserQuery(user, `http://localhost/holyday/getSkills.php`, false);
+                    const userSkillData = await generalUserQuery(user, `http://localhost/holyday/getSkills.php`, false)
                     if (userSkillData) {
-                        setSkillsData(userSkillData.data);
+                        setSkillsData(userSkillData.data)
                     }
 
                 } else {
-                    setProfileExist(false);
+                    setProfileExist(false)
                 }
             } catch (error) {
-                console.log(error);
+                console.log(error)
             } finally {
-                setLoading(false);
+                setLoading(false)
             }
         }
         if (user === username && isAuthenticated) {
-            testExistenceOfUser();
+            testExistenceOfUser()
         } else {
-            setLoading(false);
+            setLoading(false)
         }
-    }, [username]);
+    }, [username])
 
     if (!isAuthenticated) {
-        return <div>You must be logged in to view this page.</div>;
+        return <div>You must be logged in to view this page.</div>
     }
 
     if (loading) {
-        return <div>Loading profile...</div>;
+        return <div>Loading profile...</div>
     }
 
     if (!profileExist) {
         return <NotFound/>
     }
 
-    const onMouseOver = () => setImageHovered(true);
-    const onMouseOut = () => setImageHovered(false);
+    const onMouseOver = () => setImageHovered(true)
+    const onMouseOut = () => setImageHovered(false)
 
     return (
         <div className="profileMainContainer">
@@ -96,4 +96,4 @@ function ProfilePage() {
     )
 }
 
-export default ProfilePage;
+export default ProfilePage
