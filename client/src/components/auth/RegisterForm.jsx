@@ -51,6 +51,7 @@ function Register() {
         } catch (error) {
             setStatus('taken')
             setMessage('Error checking username')
+            console.log(error)
         }
     }
 

@@ -12,7 +12,7 @@ const initialItems = {
     item6: { id: "item6", content: "Node.js", x: 350, y: 160 },
 }
 
-function GridViewDnD(props) {
+function GridViewDnD() {
     const [fields, setFields] = useState(initialItems)
     const [activeId, setActiveId] = useState(null)
     const sensors = useSensors(useSensor(PointerSensor, {

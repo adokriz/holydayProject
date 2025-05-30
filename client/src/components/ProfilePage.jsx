@@ -56,7 +56,7 @@ function ProfilePage() {
         } else {
             setLoading(false)
         }
-    }, [username])
+    }, [isAuthenticated, user, username])
 
     if (!isAuthenticated) {
         return <div>You must be logged in to view this page.</div>

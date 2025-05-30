@@ -3,6 +3,7 @@ import axios from 'axios' // For logout functionality
 
 const AuthContext = createContext(null)
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
     return useContext(AuthContext)
 }
